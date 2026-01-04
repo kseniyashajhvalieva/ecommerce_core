@@ -1,5 +1,5 @@
-from src.product import Product
 from src.category import Category
+from src.product import Product
 
 
 def test_category_initialization() -> None:
@@ -23,3 +23,4 @@ def test_category_counters() -> None:
 
     assert Category.category_count == initial_categories + 1
     assert Category.product_count == initial_products + 2
+    assert cat.name == "Канцелярия"

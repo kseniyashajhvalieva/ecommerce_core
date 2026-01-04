@@ -1,5 +1,6 @@
 from src.product import Product
 
+
 def test_product_initialization() -> None:
     """Проверка создания товара"""
     p = Product("Телефон", "Смартфон", 50000.0, 10)
@@ -7,6 +8,7 @@ def test_product_initialization() -> None:
     assert p.description == "Смартфон"
     assert p.price == 50000.0
     assert p.quantity == 10
+
 
 def test_product_attributes() -> None:
     """Проверка типов данных атрибутов"""
