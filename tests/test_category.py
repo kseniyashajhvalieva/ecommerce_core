@@ -8,7 +8,7 @@ def test_category_initialization() -> None:
     cat = Category("Электроника", "Техника", [p])
     assert cat.name == "Электроника"
     assert cat.description == "Техника"
-    assert len(cat.products) == 1
+    assert "Телефон" in cat.products
 
 
 def test_category_counters() -> None:
@@ -24,3 +24,19 @@ def test_category_counters() -> None:
     assert Category.category_count == initial_categories + 1
     assert Category.product_count == initial_products + 2
     assert cat.name == "Канцелярия"
+
+
+def test_add_product() -> None:
+    """Проверяет корректность добавления товара в категорию."""
+    category = Category("Тест", "Описание", [])
+    product = Product("Товар", "Описание", 100.0, 5)
+    category.add_product(product)
+    assert "Товар, 100.0 руб. Остаток: 5 шт." in category.products
+
+
+def test_products_getter_format() -> None:
+    """Проверяет формат вывода геттера products."""
+    product = Product("Товар", "Описание", 100.0, 5)
+    category = Category("Тест", "Описание", [product])
+    expected = "Товар, 100.0 руб. Остаток: 5 шт.\n"
+    assert category.products == expected
