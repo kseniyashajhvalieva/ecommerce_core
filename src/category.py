@@ -1,5 +1,9 @@
+from src.product import Product
+
+
 class Category:
     """Класс категории товаров."""
+
     category_count: int = 0
     product_count: int = 0
 
@@ -18,7 +22,7 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products)
 
-    def add_product(self, product: 'Product') -> None:
+    def add_product(self, product: Product) -> None:
         """Добавляет товар в приватный список."""
         self.__products.append(product)
         Category.product_count += 1

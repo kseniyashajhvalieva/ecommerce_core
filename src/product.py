@@ -1,7 +1,9 @@
 class Product:
     """Класс товара."""
 
-    def __init__(self, name: str, description: str, price: float, quantity: int) -> None:
+    def __init__(
+        self, name: str, description: str, price: float, quantity: int
+    ) -> None:
         """
         Инициализация товара.
 
@@ -16,13 +18,13 @@ class Product:
         self.quantity: int = quantity
 
     @classmethod
-    def new_product(cls, product_dict: dict) -> 'Product':
+    def new_product(cls, product_dict: dict) -> "Product":
         """Создает продукт из словаря."""
         return cls(
             name=product_dict["name"],
             description=product_dict["description"],
             price=product_dict["price"],
-            quantity=product_dict["quantity"]
+            quantity=product_dict["quantity"],
         )
 
     @property
