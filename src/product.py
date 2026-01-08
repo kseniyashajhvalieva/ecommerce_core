@@ -12,5 +12,25 @@ class Product:
         """
         self.name: str = name
         self.description: str = description
-        self.price: float = price
+        self.__price: float = price
         self.quantity: int = quantity
+
+    @classmethod
+    def new_product(cls, product_dict: dict):
+        return cls(
+            name=product_dict["name"],
+            description=product_dict["description"],
+            price=product_dict["price"],
+            quantity=product_dict["quantity"]
+        )
+
+    @property
+    def price(self) -> float:
+        return self.__price
+
+    @price.setter
+    def price(self, new_price: float) -> None:
+        if new_price <= 0:
+            print("Цена не должна быть нулевая или отрицательная")
+        else:
+            self.__price = new_price
