@@ -39,3 +39,16 @@ def test_price_setter_negative() -> None:
     product = Product("Тест", "Описание", 100.0, 5)
     product.price = -50.0
     assert product.price == 100.0  # Цена не должна измениться
+
+
+def test_product_str() -> None:
+    """Проверяет строковое представление товара."""
+    product = Product("Тест", "Описание", 100.0, 5)
+    assert str(product) == "Тест, 100.0 руб. Остаток: 5 шт."
+
+
+def test_product_add() -> None:
+    """Проверяет сложение двух товаров."""
+    p1 = Product("Товар1", "Описание1", 100.0, 2)
+    p2 = Product("Товар2", "Описание2", 200.0, 3)
+    assert p1 + p2 == 100.0 * 2 + 200.0 * 3

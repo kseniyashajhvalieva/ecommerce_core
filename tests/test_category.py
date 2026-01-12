@@ -40,3 +40,11 @@ def test_products_getter_format() -> None:
     category = Category("Тест", "Описание", [product])
     expected = "Товар, 100.0 руб. Остаток: 5 шт.\n"
     assert category.products == expected
+
+
+def test_category_str() -> None:
+    """Проверяет строковое представление категории."""
+    p1 = Product("Товар1", "Описание", 100.0, 2)
+    p2 = Product("Товар2", "Описание", 200.0, 3)
+    category = Category("Категория", "Описание", [p1, p2])
+    assert str(category) == "Категория, количество продуктов: 5 шт."
