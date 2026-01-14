@@ -1,5 +1,6 @@
 from src.product import Product
 
+
 class LawnGrass(Product):
     """Класс Трава газонная, наследник Product."""
 
