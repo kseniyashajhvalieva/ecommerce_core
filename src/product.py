@@ -43,5 +43,7 @@ class Product:
     def __str__(self) -> str:
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
 
-    def __add__(self, other: "Product") -> float:
+    def __add__(self, other: 'Product') -> float:
+        if type(self) != type(other):
+            raise TypeError("Складывать можно только товары одного класса.")
         return self.price * self.quantity + other.price * other.quantity
