@@ -22,8 +22,13 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products)
 
-    def add_product(self, product: Product) -> None:
-        """Добавляет товар в приватный список."""
+    def add_product(self, product: "Product") -> None:
+        from src.product import Product
+
+        if not isinstance(product, Product):
+            raise TypeError(
+                "Можно добавлять только объекты Product или его наследников."
+            )
         self.__products.append(product)
         Category.product_count += 1
 
