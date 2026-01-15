@@ -1,4 +1,8 @@
-class Product:
+from src.base_product import BaseProduct
+from src.print_mixin import PrintMixin
+
+
+class Product(PrintMixin, BaseProduct):
     """Класс товара."""
 
     def __init__(
@@ -12,6 +16,8 @@ class Product:
         :param price: Цена товара
         :param quantity: Количество товара в наличии
         """
+        PrintMixin.__init__(self, name, description, price, quantity)
+        BaseProduct.__init__(self, name, description, price, quantity)
         self.name: str = name
         self.description: str = description
         self.__price: float = price
