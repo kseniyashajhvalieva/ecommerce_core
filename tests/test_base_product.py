@@ -1,4 +1,5 @@
-import pytest # type: ignore
+import pytest  # type: ignore
+
 from src.base_product import BaseProduct
 
 
