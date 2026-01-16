@@ -1,6 +1,5 @@
 import pytest  # type: ignore
 
-
 from src.product import Product
 
 
