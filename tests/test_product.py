@@ -1,3 +1,6 @@
+import pytest  # type: ignore
+
+
 from src.product import Product
 
 
@@ -52,3 +55,12 @@ def test_product_add() -> None:
     p1 = Product("Товар1", "Описание1", 100.0, 2)
     p2 = Product("Товар2", "Описание2", 200.0, 3)
     assert p1 + p2 == 100.0 * 2 + 200.0 * 3
+
+
+def test_product_zero_quantity_error() -> None:
+    """Проверка ошибки при создании товара с нулевым количеством"""
+    with pytest.raises(ValueError) as exc_info:
+        Product("Тест", "Описание", 100.0, 0)
+    assert str(exc_info.value) == "Товар с нулевым количеством не может быть добавлен"
+
+
