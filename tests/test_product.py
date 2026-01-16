@@ -62,5 +62,3 @@ def test_product_zero_quantity_error() -> None:
     with pytest.raises(ValueError) as exc_info:
         Product("Тест", "Описание", 100.0, 0)
     assert str(exc_info.value) == "Товар с нулевым количеством не может быть добавлен"
-
-

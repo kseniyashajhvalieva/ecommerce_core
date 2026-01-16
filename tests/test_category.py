@@ -48,3 +48,12 @@ def test_category_str() -> None:
     p2 = Product("Товар2", "Описание", 200.0, 3)
     category = Category("Категория", "Описание", [p1, p2])
     assert str(category) == "Категория, количество продуктов: 5 шт."
+
+
+def test_middle_price_with_products():
+    """Проверка среднего ценника для категории с товарами"""
+    p1 = Product("Товар1", "Описание1", 100.0, 2)
+    p2 = Product("Товар2", "Описание2", 200.0, 3)
+    category = Category("Тест", "Описание", [p1, p2])
+    # Ожидаемый результат: (100 + 200) / 2 = 150.0
+    assert category.middle_price() == 150.0
