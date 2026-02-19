@@ -1,4 +1,8 @@
-class Product:
+from src.base_product import BaseProduct
+from src.print_mixin import PrintMixin
+
+
+class Product(PrintMixin, BaseProduct):
     """Класс товара."""
 
     def __init__(
@@ -12,6 +16,12 @@ class Product:
         :param price: Цена товара
         :param quantity: Количество товара в наличии
         """
+        PrintMixin.__init__(self, name, description, price, quantity)
+        BaseProduct.__init__(self, name, description, price, quantity)
+
+        if quantity == 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
+
         self.name: str = name
         self.description: str = description
         self.__price: float = price
@@ -44,4 +54,6 @@ class Product:
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other: "Product") -> float:
+        if type(self) is not type(other):
+            raise TypeError("Складывать можно только товары одного класса.")
         return self.price * self.quantity + other.price * other.quantity
