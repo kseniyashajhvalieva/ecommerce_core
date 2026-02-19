@@ -18,6 +18,10 @@ class Product(PrintMixin, BaseProduct):
         """
         PrintMixin.__init__(self, name, description, price, quantity)
         BaseProduct.__init__(self, name, description, price, quantity)
+
+        if quantity == 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
+
         self.name: str = name
         self.description: str = description
         self.__price: float = price
